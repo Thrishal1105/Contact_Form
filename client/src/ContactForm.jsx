@@ -1,12 +1,24 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 
-const ContactForm = () => {
+const ContactForm = ({onSubmit, existing}) => {
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [email, setEmail] = useState("");
     
+    useEffect(()=>{
+        if(existing){
+            setName(existing.name);
+            setPhone(existing.phone);
+            setEmail(existing.email);
+        }
+      }, [existing]);
+
     const handleSubmit=(e)=>{
         e.preventDefault();
+        onSubmit({name, phone, email});
+        setName("");
+        setPhone("");
+        setEmail("");
     }
 
   return (<form onSubmit={handleSubmit}>
@@ -14,7 +26,7 @@ const ContactForm = () => {
     <input type="text" value={phone} required placeholder='Phone:'onChange={(e)=> setPhone(e.target.value)}/>
     <input type="email" value={email} required placeholder='Email:'onChange={(e)=> setEmail(e.target.value)}/>
 
-    <button type="submit">Add</button>
+    <button type="submit">{existing ? "Update" : "Add"}</button>
   </form>)
 }
 
