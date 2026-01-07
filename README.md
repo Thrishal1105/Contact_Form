@@ -16,8 +16,4 @@ The Contact Form feature allows users to submit their contact details, which are
 - **Backend**: The data is sent to the backend API (`api.js`) for storage and retrieval.
 - **Validation**: Basic form validation is included to ensure all fields are filled out correctly.
 
-### Future Enhancements
 
-- Add more advanced validation (e.g., email format checking).
-- Implement pagination for the Contact List.
-- Add a search feature to filter contacts.
